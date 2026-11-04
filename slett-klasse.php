@@ -9,11 +9,18 @@ if (isset($_POST["slett"])) {
     $stmt = mysqli_prepare($tilkobling, $sql);
     mysqli_stmt_bind_param($stmt, "s", $klassekode);
 
-    if (mysqli_stmt_execute($stmt)) {
-        echo "Klassen er slettet!";
+   
+try {
+    mysqli_stmt_execute($stmt);
+    echo "Klassen er slettet!";
+} catch (mysqli_sql_exception $e) {
+    if ($e->getCode() == 1451) {
+        echo "Klassen kan ikke slettes fordi det finnes studenter i klassen.";
     } else {
-        echo "Kunne ikke slette klassen. Det kan være studenter i klassen.";
+        echo "Kunne ikke slette klassen.";
     }
+}
+
 
     mysqli_stmt_close($stmt);
 }
