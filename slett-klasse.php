@@ -38,7 +38,12 @@ if (isset($_POST["slett"])) {
     </select>
 
     <br><br>
-    <input type="submit" name="slett" value="Slett klasse">
+    
+<input type="submit"
+       name="slett"
+       value="Slett klasse"
+       onclick="return confirm('Er du sikker på at du vil slette klassen?');">
+
 </form>
 
 <br>

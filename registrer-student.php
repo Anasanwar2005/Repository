@@ -20,11 +20,17 @@ if (isset($_POST["registrer"])) {
         $brukernavn, $fornavn, $etternavn, $klassekode
     );
 
-    if (mysqli_stmt_execute($stmt)) {
-        echo "Studenten er registrert!";
+   
+if (@mysqli_stmt_execute($stmt)) {
+    echo "Studenten er registrert!";
+} else {
+    if (mysqli_stmt_errno($stmt) == 1062) {
+        echo "Brukernavnet finnes allerede. Velg et annet brukernavn.";
     } else {
         echo "Kunne ikke registrere studenten.";
     }
+}
+
 
     mysqli_stmt_close($stmt);
 }

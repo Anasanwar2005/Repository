@@ -19,11 +19,13 @@ if (isset($_POST["registrer"])) {
         $klassekode, $klassenavn, $studiumkode
     );
 
-    if (mysqli_stmt_execute($stmt)) {
-        echo "Klassen er registrert!";
-    } else {
-        echo "Kunne ikke registrere klassen.";
-    }
+    
+if (@mysqli_stmt_execute($stmt)) {
+    echo "Klassen er registrert!";
+} else {
+    echo "Klassekoden finnes allerede eller noe gikk galt.";
+}
+
 
     mysqli_stmt_close($stmt);
 }

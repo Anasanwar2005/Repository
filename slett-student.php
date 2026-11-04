@@ -52,7 +52,12 @@ if (isset($_POST["slett"])) {
 
     <br><br>
 
-    <input type="submit" name="slett" value="Slett student">
+  
+<input type="submit"
+       name="slett"
+       value="Slett student"
+       onclick="return confirm('Er du sikker på at du vil slette studenten?');">
+
 
 </form>
 
