@@ -3,7 +3,7 @@
 $server = "b-studentsql-1.usn.no";
 $brukernavn = getenv("DB_USER");
 $passord = getenv("DB_PASSWORD");
-$database = getenv("DB_NAME");
+$database = "273810";
 
 $tilkobling = mysqli_connect(
     $server,
