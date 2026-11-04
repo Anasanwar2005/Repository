@@ -20,11 +20,18 @@ if (isset($_POST["registrer"])) {
     );
 
     
-if (@mysqli_stmt_execute($stmt)) {
+
+try {
+    mysqli_stmt_execute($stmt);
     echo "Klassen er registrert!";
-} else {
-    echo "Klassekoden finnes allerede eller noe gikk galt.";
+} catch (mysqli_sql_exception $e) {
+    if ($e->getCode() == 1062) {
+        echo "Klassekoden finnes allerede. Velg en annen klassekode.";
+    } else {
+        echo "Kunne ikke registrere klassen.";
+    }
 }
+
 
 
     mysqli_stmt_close($stmt);
