@@ -1,5 +1,5 @@
 
+
 <?php
-header("Location: Oblig1/index.php");
-exit;
+echo "Hei! PHP fungerer!";
 ?>
